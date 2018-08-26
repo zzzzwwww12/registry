@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: registry
+  profiles: peer1
+server:
+  port: 9291
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9292/eureka/,http://localhost:9293/eureka/
+---
+spring:
+  application:
+    name: registry
+  profiles: peer2
+server:
+  port: 9292
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9291/eureka/,http://localhost:9293/eureka/
+---
+spring:
+  application:
+    name: registry
+  profiles: peer3
+server:
+  port: 9293
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9291/eureka/,http://localhost:9292/eureka/
